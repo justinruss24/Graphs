@@ -85,7 +85,17 @@ class Graph:
 
         This should be done using recursion.
         """
-        pass  # TODO
+        # create visited set if none 
+        if visited is None:
+            visited = set()
+        # check if starting vert is in visited
+        if starting_vertex not in visited:
+            visited.add(starting_vertex)
+            print(starting_vertex)
+
+            # call recursively for neighbors of starting vert
+            for vrt in self.get_neighbors(starting_vertex):
+                self.dft_recursive(vrt, visited)
 
     def bfs(self, starting_vertex, destination_vertex):
         """
