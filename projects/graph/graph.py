@@ -42,18 +42,14 @@ class Graph:
 
         visited = set()
 
-        while q.size():
-            # dequeue the first vert
-            v = q.dequeue
-            # if the vert is not in visited
-            if v not in visited:
-                # add to visited
-                visited.add(v)
-                print(v)
-                # then add neighbors to the queue
-                neighbors = self.get_neighbors(v)
-                for neighbor in neighbors:
-                    q.enqueue(neighbor)
+        while q.size() > 0:
+            vertex = q.dequeue()
+            print(vertex)
+            visited.add(vertex)
+
+            for v in self.get_neighbors(vertex):
+                if v not in visited:
+                    q.enqueue(v)
 
     def dft(self, starting_vertex):
         """
