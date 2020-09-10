@@ -50,6 +50,21 @@ last_room = None
 print("GRAPH", room_graph)
 print("EXITS: ", exits)
 
+'''
+PLAN
+-----------
+while len of rooms dict is < the graph
+    check if current room is in rooms
+    add it and its exits
+    grab reverse of last direction traveled so it can be removed from exit options of current room
+when a room has no exit, backtrack
+    pop last reverse direction traveled to to remove it from backtrack list and add to traversal path
+    then move player in the reverse direction
+pop first available exit direction to remove it from possible exits
+add to traversal path and add to end of backtrack path list
+then move towards direction of first available exit
+if only one room left unvisited, store it as well as its exits in room dictionary to avoid error using pop on empty list
+'''
 
 # TRAVERSAL TEST
 visited_rooms = set()
