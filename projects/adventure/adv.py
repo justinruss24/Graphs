@@ -2,6 +2,8 @@ from room import Room
 from player import Player
 from world import World
 
+from utils import Stack, Graph
+
 import random
 from ast import literal_eval
 
@@ -29,6 +31,24 @@ player = Player(world.starting_room)
 # traversal_path = ['n', 'n']
 traversal_path = []
 
+# backtracking directions
+backtrack_moves = { "n":"s", "s":"n", "e":"w", "w":"e" }
+# keep track of directions node visited for backtracking
+backtrack = []
+rooms = {}
+
+# initialize dict. and keep track of current room/exits
+rooms[player.current_room.id] = player.current_room.get_exits()
+print("ROOMS: ", rooms)
+
+starting = player.current_room.id
+exits = player.current_room.get_exits()
+
+# variable to keep track of previous room
+last_room = None
+
+print("GRAPH", room_graph)
+print("EXITS: ", exits)
 
 
 # TRAVERSAL TEST
