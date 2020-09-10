@@ -65,6 +65,17 @@ add to traversal path and add to end of backtrack path list
 then move towards direction of first available exit
 if only one room left unvisited, store it as well as its exits in room dictionary to avoid error using pop on empty list
 '''
+while len(rooms) < len(room_graph):
+    if player.current_room.id not in rooms:
+        rooms[player.current_room.id] = player.current_room.get_exits()
+        reverse_direction = backtrack[-1]
+        rooms[player.current_room.id].remove(reverse_direction)
+    while len(rooms[player.current_room.id]) < 1:
+        reverse_direction = backtrack.pop()
+        print("DIRECTIONS: ", reverse_direction)
+        traversal_path.append(reverse_direction)
+        player.travel(reverse_direction) 
+# done for day 1
 
 # TRAVERSAL TEST
 visited_rooms = set()
