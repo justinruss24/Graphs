@@ -45,7 +45,7 @@ starting = player.current_room.id
 exits = player.current_room.get_exits()
 
 # variable to keep track of previous room
-last_room = None
+# last_room = None
 
 print("GRAPH", room_graph)
 print("EXITS: ", exits)
@@ -72,15 +72,15 @@ while len(rooms) < len(room_graph):
         rooms[player.current_room.id].remove(reverse_direction)
     while len(rooms[player.current_room.id]) < 1:
         reverse_direction = backtrack.pop()
-        print("DIRECTIONS: ", reverse_direction)
+        # print("DIRECTIONS: ", reverse_direction)
         traversal_path.append(reverse_direction)
         player.travel(reverse_direction) 
 # done for day 1
     exit_direction = rooms[player.current_room.id].pop(0)
     traversal_path.append(exit_direction)
     backtrack.append(backtrack_moves[exit_direction])
-    print("TRAVERSAL PATH: ", traversal_path)
-    print("BACKTRACK LIST: ", backtrack)
+    # print("TRAVERSAL PATH: ", traversal_path)
+    # print("BACKTRACK LIST: ", backtrack)
     # toward first exit
     player.travel(exit_direction)
     if len(room_graph) - len(rooms) == 1:
