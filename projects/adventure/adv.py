@@ -16,10 +16,10 @@ world = World()
 # map_file = "maps/test_cross.txt"
 # map_file = "maps/test_loop.txt"
 # map_file = "maps/test_loop_fork.txt"
-map_file = "maps/main_maze.txt"
+map_file = "projects/adventure/maps/main_maze.txt"
 
 # Loads the map into a dictionary
-room_graph=literal_eval(open(map_file, "r").read())
+room_graph = literal_eval(open(map_file, "r").read())
 world.load_graph(room_graph)
 
 # Print an ASCII map
@@ -76,6 +76,17 @@ while len(rooms) < len(room_graph):
         traversal_path.append(reverse_direction)
         player.travel(reverse_direction) 
 # done for day 1
+    exit_direction = rooms[player.current_room.id].pop(0)
+    traversal_path.append(exit_direction)
+    backtrack.append(backtrack_moves[exit_direction])
+    print("TRAVERSAL PATH: ", traversal_path)
+    print("BACKTRACK LIST: ", backtrack)
+    # toward first exit
+    player.travel(exit_direction)
+    if len(room_graph) - len(rooms) == 1:
+        rooms[player.current_room.id] = player.current_room.get_exits()
+    
+
 
 # TRAVERSAL TEST
 visited_rooms = set()
